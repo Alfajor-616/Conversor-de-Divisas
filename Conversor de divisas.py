@@ -32,8 +32,6 @@ combo_destino = ttk.Combobox(root, values=currency_list)
 combo_destino.pack()
 
 # Crear función para realizar la conversión
-
-
 def conversion():
     origen = combo_origen.get()
     destino = combo_destino.get()
@@ -60,7 +58,7 @@ label_resultado.pack()
 
 # Crear gráfica de fluctuación de la moneda
 fig, ax = plt.subplots()
-# Aquí puedes agregar los datos y configurar la gráfica según tus necesidades
+#  datos y configurar la gráfica según tus necesidades
 
 # ax.plot(x_data, y_data)
 canvas = FigureCanvasTkAgg(fig, master=root)
@@ -70,8 +68,6 @@ canvas.get_tk_widget().pack()
 root.mainloop()
 
 # Función para realizar la solicitud HTTP en segundo plano
-
-
 def get_currencies():
     global currencies
     response = requests.get(
@@ -79,8 +75,6 @@ def get_currencies():
     currencies = response.json()['results']
 
 # Función para realizar la conversión en segundo plano
-
-
 def perform_conversion():
     Thread(target=get_currencies).start()
     Thread(target=conversion).start()
